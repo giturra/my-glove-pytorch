@@ -36,4 +36,7 @@ class Glove(nn.Module):
         x = (sim + l_bias + r_bias - log_covals) ** 2
         loss = torch.mul(x, weight)
         return loss.mean()
+            
+    def get_embedding(self, idx):
+        return self.emb_u.weight[idx] + self.emb_v.weight[idx].detach().cpu().numpy()
 

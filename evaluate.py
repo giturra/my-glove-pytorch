@@ -21,6 +21,6 @@ MEN = fetch_MEN()
 embs = {}
 
 for word, idx in vocab.items():
-    embs[word] = (model.emb_u.weight[idx] + model.emb_v.weight[idx]).detach().cpu().numpy()
+    embs[word] = model.get_embedding(idx)
 
 print(evaluate_similarity(embs, MEN.X, MEN.y))
